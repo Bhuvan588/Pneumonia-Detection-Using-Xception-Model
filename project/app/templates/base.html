@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+
+    <style>
+        .navbar {
+            background-color: #3B82F6; /* Custom blue color */
+        }
+
+        .navbar-menu {
+            flex-grow: 1;
+            justify-content: flex-end; /* Aligns the button to the right */
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar shadow-lg">
+        <div class="container-fluid navbar-brand">
+            <a class="navbar-item has-text-white">Navbar</a>
+        </div>
+
+        <div class="navbar-menu">
+            <form class="nav" role="search">
+                {% if request.user.is_authenticated %}
+                    <a href='/logout/' class="button is-danger is-dark">Logout</a>
+                {% else %}
+                    <a href='/login/' class="button is-success">Login</a>
+                {% endif %}
+            </form>
+        </div>
+    </nav>
+
+    {% block start %}
+    {% endblock start %}
+
+</body>
+</html>
