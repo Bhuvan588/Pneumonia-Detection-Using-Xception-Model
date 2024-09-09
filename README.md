@@ -1,5 +1,5 @@
 
-:dna: # Pneumonia-Detection-Using-Xception Model
+#:dna:  Pneumonia-Detection-Using-Xception Model
 
 This project aims to detect whether a person has pneumonia or not by taking an xray image as input. It uses Xception Model for prediction and Django framework for storing and diaplaying records entered by a patient or user.
 
@@ -11,13 +11,13 @@ This project aims to detect whether a person has pneumonia or not by taking an x
 
 
 
-:closed_book:  ## Why Xception you may ask?
+##:closed_book:   Why Xception you may ask?
 
 I was reading about some architectures that have been progressively made over time. Hence I learnt about Xception model. It is an architecture which uses less no of computations that its previous models like Inception because it uses Depthwise Convolutions to reduce the complexity and cost of traditional Convolutions.
 ![WhatsApp Image 2024-09-09 at 12 45 51 AM](https://github.com/user-attachments/assets/af9c8358-a545-4b12-b78c-44b6fdce53f0)
 
 
-:pushpin: ## Installation
+##:pushpin:  Installation
 
 1. Clone the project into your required folder
 
@@ -35,7 +35,7 @@ I was reading about some architectures that have been progressively made over ti
 
 
 
-:bulb: ## Features
+##:bulb:  Features
 
 - Model:  Uses the Xception model trained on chest X-ray images.
 
@@ -45,7 +45,7 @@ I was reading about some architectures that have been progressively made over ti
 
 
 
-:octocat: ## Contributing
+##:octocat:  Contributing
 
 Contributions are welcome! If you have suggestions or improvements, please open an issue or submit a pull request
 
