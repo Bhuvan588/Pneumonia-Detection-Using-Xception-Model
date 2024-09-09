@@ -11,20 +11,24 @@ from tensorflow.keras.models import load_model
 from PIL import Image
 from django.conf import settings
 import os
+import cv2
 import numpy as np
 
 def preprocess_image(image):
     img = Image.open(image)
-    img = img.resize((299, 299))  # Resize based on model's input shape
-    img = np.array(img) / 255.0   # Normalize the image (if your model requires normalization)
     
-    if img.ndim == 2:  # Grayscale image
-        img = np.stack([img] * 3, axis=-1)  # Convert to RGB by repeating grayscale channel
-    elif img.shape[-1] == 4:  # RGBA image
-        img = img[..., :3]  # Drop the alpha channel if present
+    # Convert image to RGB if necessary
+    if img.mode != 'RGB':
+        img = img.convert('RGB')
     
-    img = np.expand_dims(img, axis=0)  # Add batch dimension
-    return img
+    # Resize the image to (256, 256)
+    img = img.resize((299, 299))
+    
+    
+    # Expand dimensions to match the input shape expected by the model
+    img_array = np.expand_dims(img, axis=0)
+
+    return img_array
 
 def login_page(request):
     if request.method == "POST":
@@ -60,6 +64,7 @@ def user_records(request, user_id):
             preprocessed_image = preprocess_image(image)
             prediction_result = model.predict(preprocessed_image)
             prediction_prob = prediction_result[0][0]
+            print(prediction_result)
             print(prediction_prob)
             predicted_class = (prediction_prob > 0.5).astype(int)  # Apply threshold
 
